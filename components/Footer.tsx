@@ -1,168 +1,159 @@
 "use client";
 
 import Link from 'next/link';
-import styles from './Footer.module.css';
 
 export default function Footer() {
   return (
-    <footer className={styles.footer}>
-      <div className={styles.container}>
-        <div className={styles.footerContent}>
-          <div className={styles.logoSection}>
-            <h2>EduGuide</h2>
-            <p>Your trusted partner in educational guidance</p>
+    <footer style={{
+      backgroundColor: '#1e40af',
+      color: '#fff',
+      padding: '4rem 2rem 2rem'
+    }}>
+      <div style={{
+        maxWidth: '1200px',
+        margin: '0 auto'
+      }}>
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+          gap: '2rem',
+          marginBottom: '3rem'
+        }}>
+          <div>
+            <h2 style={{
+              fontSize: '2rem',
+              marginBottom: '1rem'
+            }}>EduGuide</h2>
+            <p style={{
+              color: '#e2e8f0'
+            }}>Your trusted partner in educational guidance</p>
           </div>
 
-          <div className={styles.linksSection}>
-            <h3>Quick Links</h3>
-            <ul>
-              <li><Link href="/">Home</Link></li>
-              <li><Link href="/career-help">Career Help</Link></li>
-              <li><Link href="/classes">Classes</Link></li>
-              <li><Link href="/contact">Contact</Link></li>
+          <div>
+            <h3 style={{
+              marginBottom: '1.5rem'
+            }}>Quick Links</h3>
+            <ul style={{
+              listStyle: 'none',
+              padding: 0
+            }}>
+              <li>
+                <Link href="/" style={{
+                  textDecoration: 'none',
+                  color: '#fff',
+                  display: 'block',
+                  marginBottom: '0.5rem'
+                }}>Home</Link>
+              </li>
+              <li>
+                <Link href="/career-help" style={{
+                  textDecoration: 'none',
+                  color: '#fff',
+                  display: 'block',
+                  marginBottom: '0.5rem'
+                }}>Career Help</Link>
+              </li>
+              <li>
+                <Link href="/classes" style={{
+                  textDecoration: 'none',
+                  color: '#fff',
+                  display: 'block',
+                  marginBottom: '0.5rem'
+                }}>Classes</Link>
+              </li>
+              <li>
+                <Link href="/contact" style={{
+                  textDecoration: 'none',
+                  color: '#fff',
+                  display: 'block'
+                }}>Contact</Link>
+              </li>
             </ul>
           </div>
 
-          <div className={styles.contactSection}>
-            <h3>Contact Us</h3>
-            <ul>
+          <div>
+            <h3 style={{
+              marginBottom: '1.5rem'
+            }}>Contact Us</h3>
+            <ul style={{
+              listStyle: 'none',
+              padding: 0
+            }}>
               <li>
-                <a href="mailto:info@eduguide.com">info@eduguide.com</a>
+                <a href="mailto:info@eduguide.com" style={{
+                  textDecoration: 'none',
+                  color: '#fff',
+                  display: 'block',
+                  marginBottom: '0.5rem'
+                }}>info@eduguide.com</a>
               </li>
               <li>
-                <a href="tel:+1234567890">+1 234 567 890</a>
+                <a href="tel:+1234567890" style={{
+                  textDecoration: 'none',
+                  color: '#fff',
+                  display: 'block',
+                  marginBottom: '0.5rem'
+                }}>+1 234 567 890</a>
               </li>
-              <li>123 Education Street, Learning City</li>
+              <li style={{
+                color: '#e2e8f0'
+              }}>123 Education Street, Learning City</li>
             </ul>
           </div>
 
-          <div className={styles.socialSection}>
-            <h3>Follow Us</h3>
-            <div className={styles.socialLinks}>
-              <a href="#" aria-label="Facebook">
-                <span className="icon-facebook"></span>
+          <div>
+            <h3 style={{
+              marginBottom: '1.5rem'
+            }}>Follow Us</h3>
+            <div style={{
+              display: 'flex',
+              gap: '1rem'
+            }}>
+              <a href="#" aria-label="Facebook" style={{
+                color: '#fff',
+                textDecoration: 'none'
+              }}>
+                <span className="icon-facebook" style={{
+                  fontSize: '1.5rem'
+                }}></span>
               </a>
-              <a href="#" aria-label="Twitter">
-                <span className="icon-twitter"></span>
+              <a href="#" aria-label="Twitter" style={{
+                color: '#fff',
+                textDecoration: 'none'
+              }}>
+                <span className="icon-twitter" style={{
+                  fontSize: '1.5rem'
+                }}></span>
               </a>
-              <a href="#" aria-label="Instagram">
-                <span className="icon-instagram"></span>
+              <a href="#" aria-label="Instagram" style={{
+                color: '#fff',
+                textDecoration: 'none'
+              }}>
+                <span className="icon-instagram" style={{
+                  fontSize: '1.5rem'
+                }}></span>
               </a>
-              <a href="#" aria-label="LinkedIn">
-                <span className="icon-linkedin"></span>
+              <a href="#" aria-label="LinkedIn" style={{
+                color: '#fff',
+                textDecoration: 'none'
+              }}>
+                <span className="icon-linkedin" style={{
+                  fontSize: '1.5rem'
+                }}></span>
               </a>
             </div>
           </div>
         </div>
 
-        <div className={styles.copyright}>
+        <div style={{
+          textAlign: 'center',
+          marginTop: '3rem',
+          borderTop: '1px solid rgba(255,255,255,0.1)',
+          paddingTop: '2rem'
+        }}>
           <p>&copy; {new Date().getFullYear()} EduGuide. All rights reserved.</p>
         </div>
       </div>
-
-      <style jsx>{`
-        .footer {
-          background-color: #1e40af;
-          color: white;
-          padding: 4rem 2rem 2rem;
-        }
-
-        .container {
-          max-width: 1200px;
-          margin: 0 auto;
-        }
-
-        .footerContent {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-          gap: 2rem;
-          margin-bottom: 3rem;
-        }
-
-        .logoSection h2 {
-          font-size: 2rem;
-          margin-bottom: 1rem;
-        }
-
-        .logoSection p {
-          color: #e2e8f0;
-        }
-
-        .linksSection, .contactSection, .socialSection {
-          h3 {
-            margin-bottom: 1.5rem;
-            color: white;
-          }
-
-          ul {
-            list-style: none;
-            padding: 0;
-          }
-
-          li {
-            margin-bottom: 0.75rem;
-          }
-
-          a {
-            color: #e2e8f0;
-            text-decoration: none;
-            transition: color 0.2s;
-
-            &:hover {
-              color: white;
-            }
-          }
-        }
-
-        .socialLinks {
-          display: flex;
-          gap: 1rem;
-
-          a {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            background-color: rgba(255, 255, 255, 0.1);
-            transition: background-color 0.2s;
-
-            &:hover {
-              background-color: rgba(255, 255, 255, 0.2);
-            }
-
-            .icon-facebook::before {
-              content: 'F';
-            }
-
-            .icon-twitter::before {
-              content: 'T';
-            }
-
-            .icon-instagram::before {
-              content: 'I';
-            }
-
-            .icon-linkedin::before {
-              content: 'L';
-            }
-          }
-        }
-
-        .copyright {
-          text-align: center;
-          padding-top: 2rem;
-          border-top: 1px solid rgba(255, 255, 255, 0.1);
-          margin-top: 2rem;
-        }
-
-        @media (max-width: 768px) {
-          .footerContent {
-            grid-template-columns: 1fr;
-          }
-        }
-      `}</style>
     </footer>
   );
 }

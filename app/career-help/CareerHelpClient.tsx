@@ -47,120 +47,217 @@ export default function CareerHelpClient() {
   };
 
   return (
-    <main className="min-h-screen bg-gray-50">
+    <main style={{
+      minHeight: '100vh',
+      backgroundColor: '#f9fafb',
+      padding: '2rem'
+    }}>
       {/* Navigation */}
-      <nav className="bg-white shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between h-16">
-            <div className="flex items-center">
-              <Link href="/" className="flex items-center">
-                <span className="text-2xl font-bold text-blue-600">LearnHub</span>
-              </Link>
-            </div>
-            <div className="flex items-center space-x-4">
-              <Link href="/classes" className="text-gray-700 hover:text-blue-600">Classes</Link>
-              <Link href="/career-help" className="text-gray-700 hover:text-blue-600">Career Guidance</Link>
-              <Link href="/about" className="text-gray-700 hover:text-blue-600">About</Link>
-            </div>
+      <div style={{
+        backgroundColor: '#fff',
+        padding: '1rem',
+        boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
+      }}>
+        <div style={{
+          maxWidth: '800px',
+          margin: '0 auto',
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center'
+        }}>
+          <div style={{
+            display: 'flex',
+            alignItems: 'center'
+          }}>
+            <Link href="/" style={{
+              textDecoration: 'none',
+              color: '#337ab7'
+            }}>
+              <span style={{
+                fontSize: '1.5rem',
+                fontWeight: 'bold',
+                color: '#337ab7'
+              }}>LearnHub</span>
+            </Link>
+          </div>
+          <div style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            width: '30%'
+          }}>
+            <Link href="/classes" style={{
+              textDecoration: 'none',
+              color: '#337ab7',
+              marginRight: '1rem'
+            }}>Classes</Link>
+            <Link href="/career-help" style={{
+              textDecoration: 'none',
+              color: '#337ab7',
+              marginRight: '1rem'
+            }}>Career Guidance</Link>
+            <Link href="/about" style={{
+              textDecoration: 'none',
+              color: '#337ab7'
+            }}>About</Link>
           </div>
         </div>
-      </nav>
+      </div>
 
       {/* Hero Section */}
       <motion.div 
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white py-24"
+        style={{
+          backgroundColor: 'linear-gradient(to right, #3498db, #9b59b6)',
+          color: '#fff',
+          padding: '4rem',
+          marginTop: '2rem'
+        }}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h1 className="text-4xl font-bold mb-6">
-              AI-Powered Career Guidance
-            </h1>
-            <p className="text-xl mb-8">
-              Get personalized career recommendations based on your interests and skills
-            </p>
-          </div>
+        <div style={{
+          maxWidth: '800px',
+          margin: '0 auto',
+          textAlign: 'center'
+        }}>
+          <h1 style={{
+            fontSize: '2.5rem',
+            fontWeight: 'bold',
+            marginBottom: '1rem'
+          }}>
+            AI-Powered Career Guidance
+          </h1>
+          <p style={{
+            fontSize: '1.5rem',
+            marginBottom: '2rem'
+          }}>
+            Get personalized career recommendations based on your interests and skills
+          </p>
         </div>
       </motion.div>
 
       {/* Career Guidance Form */}
-      <section className="py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-white rounded-xl shadow-lg p-8">
-            <h2 className="text-2xl font-bold text-center mb-8">Tell Us About Yourself</h2>
-            
-            <form onSubmit={handleSubmit} className="space-y-8">
-              <div className="grid md:grid-cols-2 gap-8">
-                <div>
-                  <label htmlFor="subjects" className="block text-sm font-medium text-gray-700 mb-2">
-                    Preferred Subjects
-                  </label>
-                  <input
-                    type="text"
-                    id="subjects"
-                    name="subjects"
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                    placeholder="e.g., Science, Math, English"
-                    required
-                  />
-                </div>
+      <section style={{
+        padding: '4rem'
+      }}>
+        <div style={{
+          maxWidth: '800px',
+          margin: '0 auto',
+          backgroundColor: '#fff',
+          padding: '2rem',
+          borderRadius: '1rem',
+          boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
+        }}>
+          <h2 style={{
+            fontSize: '2rem',
+            fontWeight: 'bold',
+            marginBottom: '1rem',
+            textAlign: 'center'
+          }}>Tell Us About Yourself</h2>
+          
+          <form onSubmit={handleSubmit} style={{
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '1.5rem',
+            marginBottom: '2rem'
+          }}>
+            <div>
+              <label style={{
+                display: 'block',
+                marginBottom: '0.5rem',
+                fontWeight: 'bold'
+              }}>Preferred Subjects</label>
+              <textarea
+                name="subjects"
+                required
+                style={{
+                  width: '100%',
+                  padding: '0.75rem',
+                  border: '1px solid #e5e7eb',
+                  borderRadius: '0.5rem',
+                  fontSize: '1rem'
+                }}
+                placeholder="Enter your preferred subjects..."
+              />
+            </div>
 
-                <div>
-                  <label htmlFor="goals" className="block text-sm font-medium text-gray-700 mb-2">
-                    Future Goals
-                  </label>
-                  <textarea
-                    id="goals"
-                    name="goals"
-                    rows={3}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                    placeholder="e.g., Want to become a doctor, interested in technology"
-                    required
-                  />
-                </div>
+            <div>
+              <label style={{
+                display: 'block',
+                marginBottom: '0.5rem',
+                fontWeight: 'bold'
+              }}>Future Goals</label>
+              <textarea
+                name="goals"
+                required
+                style={{
+                  width: '100%',
+                  padding: '0.75rem',
+                  border: '1px solid #e5e7eb',
+                  borderRadius: '0.5rem',
+                  fontSize: '1rem'
+                }}
+                placeholder="Enter your future goals..."
+              />
+            </div>
 
-                <div className="col-span-full">
-                  <label htmlFor="problem-solving" className="block text-sm font-medium text-gray-700 mb-2">
-                    Problem-solving Skills
-                  </label>
-                  <textarea
-                    id="problem-solving"
-                    name="problem-solving"
-                    rows={3}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                    placeholder="e.g., Good at logical reasoning, quick learner"
-                    required
-                  />
-                </div>
-              </div>
+            <div>
+              <label style={{
+                display: 'block',
+                marginBottom: '0.5rem',
+                fontWeight: 'bold'
+              }}>Problem Solving Skills</label>
+              <textarea
+                name="problem-solving"
+                required
+                style={{
+                  width: '100%',
+                  padding: '0.75rem',
+                  border: '1px solid #e5e7eb',
+                  borderRadius: '0.5rem',
+                  fontSize: '1rem'
+                }}
+                placeholder="Describe your problem-solving skills..."
+              />
+            </div>
 
-              <button
-                type="submit"
-                disabled={loading}
-                className="w-full bg-blue-600 text-white py-3 px-8 rounded-md font-semibold hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50"
-              >
-                {loading ? 'Generating Advice...' : 'Get Career Recommendation'}
-              </button>
-            </form>
+            <button
+              type="submit"
+              disabled={loading}
+              style={{
+                backgroundColor: '#3b82f6',
+                color: '#fff',
+                padding: '0.75rem 1.5rem',
+                borderRadius: '0.5rem',
+                border: 'none',
+                cursor: 'pointer',
+                fontSize: '1rem',
+                fontWeight: 'bold'
+              }}
+            >
+              {loading ? 'Generating Advice...' : 'Get Career Advice'}
+            </button>
+          </form>
 
-            {error && (
-              <div className="mt-4 p-4 bg-red-50 text-red-700 rounded-md">
-                {error}
-              </div>
-            )}
+          {error && (
+            <div style={{
+              backgroundColor: '#fee2e2',
+              color: '#b91c1c',
+              padding: '1rem',
+              borderRadius: '0.5rem',
+              marginBottom: '1rem'
+            }}>
+              {error}
+            </div>
+          )}
 
-            {advice && (
-              <motion.div 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="mt-8 bg-blue-50 p-6 rounded-lg"
-              >
-                <h3 className="text-xl font-semibold mb-4">AI Career Counselor's Recommendation</h3>
-                <div dangerouslySetInnerHTML={{ __html: advice }} />
-              </motion.div>
-            )}
-          </div>
+          {advice && (
+            <div style={{
+              backgroundColor: '#f3f4f6',
+              padding: '1.5rem',
+              borderRadius: '0.5rem',
+              marginTop: '1.5rem'
+            }} dangerouslySetInnerHTML={{ __html: advice }} />
+          )}
         </div>
       </section>
     </main>
