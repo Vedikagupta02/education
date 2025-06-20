@@ -1,0 +1,92 @@
+.main {
+  min-height: 100vh;
+  padding-top: 80px;
+  background-color: #f8fafc;
+}
+
+.hero {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.heroTitle {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 1.5rem;
+}
+
+.heroSubtitle {
+  font-size: 1.5rem;
+  color: #475569;
+  margin-bottom: 2rem;
+}
+
+.heroButtons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.primaryButton {
+  background-color: #2563eb;
+  color: white;
+  padding: 0.75rem 2rem;
+  border-radius: 0.5rem;
+  border: none;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.primaryButton:hover {
+  background-color: #1d4ed8;
+}
+
+.secondaryButton {
+  background-color: #f8fafc;
+  color: #1e293b;
+  padding: 0.75rem 2rem;
+  border-radius: 0.5rem;
+  border: 1px solid #e2e8f0;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.secondaryButton:hover {
+  background-color: #f1f5f9;
+}
+
+.testimonials {
+  max-width: 1200px;
+  margin: 4rem auto;
+  padding: 0 2rem;
+}
+
+.testimonialGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.testimonialCard {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.testimonialCard p {
+  color: #475569;
+  margin-bottom: 1rem;
+}
+
+.testimonialAuthor {
+  display: block;
+  color: #64748b;
+  font-style: italic;
+}
