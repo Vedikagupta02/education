@@ -1,41 +1,43 @@
-import OpenAI from 'openai';
-
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
+import { NextResponse } from 'next/server';
 
 export async function POST(request: Request) {
   try {
-    const { subjects, goals, problem_solving } = await request.json();
+    const body = await request.json();
+    const { subjects, goals, problem_solving } = body;
 
-    const prompt = `Based on the following information about a student:
-    - Preferred subjects: ${subjects}
-    - Future goals: ${goals}
-    - Problem-solving skills: ${problem_solving}
-    
-    Provide personalized career guidance for a Class 10 student choosing their stream after 10th. Include:
-    1. Recommended stream (Science, Commerce, Arts)
-    2. Potential career paths
-    3. Skills needed for success
-    4. Educational requirements
-    5. Industry outlook
-    
-    Format the response in HTML with proper headings and bullet points.`;
-
-    const completion = await openai.chat.completions.create({
-      model: "gpt-3.5-turbo",
-      messages: [{ role: "user", content: prompt }],
-      temperature: 0.7,
+    const response = await fetch('http://localhost:5000/api/career-advice', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({
+        subjects,
+        goals,
+        problem_solving,
+      }),
     });
 
-    return Response.json({
-      success: true,
-      advice: completion.choices[0].message.content,
-    });
+    if (!response.ok) {
+      const errorData = await response.json().catch(() => ({}));
+      const errorMessage = errorData.error || `Server responded with status ${response.status}`;
+      throw new Error(errorMessage);
+    }
+
+    const data = await response.json();
+    
+    if (!data.success || !data.advice) {
+      throw new Error(data.error || 'Invalid response format from server');
+    }
+
+    return NextResponse.json(data);
   } catch (error) {
     console.error('Error in career advice API:', error);
-    return Response.json(
-      { success: false, error: 'Failed to generate career advice' },
+    return NextResponse.json(
+      { 
+        success: false, 
+        error: error instanceof Error ? error.message : 'An unexpected error occurred'
+      },
       { status: 500 }
     );
   }
