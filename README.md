@@ -35,8 +35,8 @@ This is a modern, full-featured education platform built with Next.js 14 and Typ
 |-------|------------|
 | Frontend | Next.js 14, React, TypeScript |
 | Styling | CSS, Framer Motion, Swiper |
-| AI Backend | OpenAI API (ChatGPT) |
-| Backend | Flask (for AI endpoints) |
+| AI Backend | OpenAI API  |
+| Backend | Flask  |
 
 ## Getting Started
 
