@@ -1,44 +1,46 @@
-AI-Powered Education & Career Guidance Platform
+# AI-Powered Education & Career Guidance Platform
+
 This is a modern, full-featured education platform built with Next.js 14 and TypeScript, designed to empower students with personalized career guidance, class-specific learning modules, and interactive UI components. It integrates cutting-edge technologies like the OpenAI API, Framer Motion, and Swiper to deliver an engaging and intuitive experience.
 
- Features
-1. AI-Powered Career Guidance
-Personalized career advice based on user interests, goals, and skills
+## Features
 
-Powered by OpenAI's GPT for real-time, intelligent recommendations
+### AI-Powered Career Guidance
+- **Personalized career advice** based on user interests, goals, and skills
+- Powered by OpenAI's GPT for real-time, intelligent recommendations
+- Streamlined form and result view tailored for Class 10 students choosing their academic stream (Science, Commerce, Arts)
 
-Streamlined form and result view designed for Class 10 students choosing streams
+### Class Management System
+- Learning modules and assignments for Classes 3 to 10
+- Subjects organized in a user-friendly dashboard
+- Clean, consistent UI with collapsible sections for enhanced navigation
 
-2. Class Management System
-Modules and assignments for Classes 3 to 10
+### Real-time Chat Support (Coming Soon)
+- Smart chat assistant to answer career-related queries
+- Built using OpenAI for natural, context-aware interactions
 
-Each class organized by subjects with a user-friendly dashboard
+### Fully Responsive Frontend
+- Built using React and Next.js 14
+- Enhanced with smooth animations using Framer Motion
+- Swiper used for interactive sliders and testimonials
+- Optimized for accessibility and mobile responsiveness
 
-Clean, consistent UI with collapsible content sections
+### Professional Contact Page
+- Clean and intuitive contact form
+- Integration of social media links and location information
+- Designed for professional communication
 
-3. Real-time Chat Support (Coming Soon)
-A smart chat assistant that answers career-related queries
+## Tech Stack
 
-Powered by OpenAI for natural and accurate interactions
+| Layer | Technology |
+|-------|------------|
+| Frontend | Next.js 14, React, TypeScript |
+| Styling | CSS, Framer Motion, Swiper |
+| AI Backend | OpenAI API (ChatGPT) |
+| Backend | Flask (for AI endpoints) |
 
-4. Fully Responsive Frontend
-Built with React and Next.js 14
+## Getting Started
 
-Smooth animations with Framer Motion
-
-Interactive components using Swiper
-
-5. Professional Contact Page
-Clean contact form for communication
-
-Social media integration and location info
-
-Accessible and mobile-friendly design
-
-🛠️ Tech Stack
-Layer	Technology
-Frontend	Next.js 14, React, TypeScript
-StylingCSS, Framer Motion, Swiper
-AI API	OpenAI API (ChatGPT)
-Backend	Flask (for AI endpoint)
-
+1. Clone the repository:
+```bash
+git clone [https://github.com/Vedikagupta02/education.git](https://github.com/Vedikagupta02/education.git)
+cd education
