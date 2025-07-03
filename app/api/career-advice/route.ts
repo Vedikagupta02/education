@@ -5,7 +5,8 @@ export async function POST(request: Request) {
     const body = await request.json();
     const { subjects, goals, problem_solving } = body;
 
-    const response = await fetch('http://localhost:5000/api/career-advice', {
+    // Use the correct backend server URL
+    const response = await fetch('http://192.168.0.105:5000/api/career-advice', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -27,12 +28,9 @@ export async function POST(request: Request) {
     return NextResponse.json(data);
   } catch (error) {
     console.error('Error in career advice API:', error);
-    return NextResponse.json(
-      { 
-        success: false, 
-        error: error instanceof Error ? error.message : 'An unexpected error occurred'
-      },
-      { status: 500 }
-    );
+    return NextResponse.json({
+      success: false,
+      error: error instanceof Error ? error.message : 'Failed to connect to career advice service'
+    }, { status: 500 });
   }
 }

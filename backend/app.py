@@ -1,9 +1,9 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
-import openai
 import os
 from dotenv import load_dotenv
 import logging
+from huggingface_client import HuggingFaceClient
 
 # Configure logging
 logging.basicConfig(level=logging.DEBUG)
@@ -26,9 +26,8 @@ CORS(app, resources={
     }
 })
 
-# Set up OpenAI
-openai.api_key = os.getenv('OPENAI_API_KEY')
-logger.info(f"OpenAI API key loaded: {'***' + openai.api_key[-4:] if openai.api_key else 'NOT FOUND'}")
+# Initialize Hugging Face client
+hf_client = HuggingFaceClient()
 
 @app.route('/')
 def index():
@@ -46,37 +45,12 @@ def career_advice():
         goals = data.get('goals', '')
         problem_solving = data.get('problem_solving', '')
 
-        # Generate career advice using OpenAI
-        prompt = f"""
-        You are a career counselor for Class 10 students. Provide personalized career guidance based on the following information:
-
-        Preferred Subjects: {subjects}
-        Future Goals: {goals}
-        Problem Solving Skills: {problem_solving}
-
-        Please provide:
-        1. Recommended career paths based on their interests and skills
-        2. Required subjects for each path
-        3. Future prospects
-        4. Personal development suggestions
-
-        Format the response in a friendly, conversational tone.
-        """
-
         try:
-            client = openai.OpenAI(api_key=os.getenv('OPENAI_API_KEY'))
-            response = client.chat.completions.create(
-                model="gpt-3.5-turbo",
-                messages=[
-                    {"role": "system", "content": "You are a career counselor for Class 10 students."},
-                    {"role": "user", "content": prompt}
-                ]
-            )
-            advice = response.choices[0].message.content
+            advice = hf_client.get_career_advice(subjects, goals, problem_solving)
             return jsonify({"success": True, "advice": advice})
         except Exception as e:
-            logger.error(f"OpenAI API error: {str(e)}", exc_info=True)
-            return jsonify({"success": False, "error": f"OpenAI API error: {str(e)}"}), 500
+            logger.error(f"API error: {str(e)}", exc_info=True)
+            return jsonify({"success": False, "error": f"API error: {str(e)}"}), 500
 
     except Exception as e:
         logger.error(f"Error in career advice: {str(e)}", exc_info=True)
@@ -102,17 +76,8 @@ def chat():
         logger.info(f"Processing message: {user_message}")
         
         try:
-            response = openai.ChatCompletion.create(
-                model="gpt-3.5-turbo",
-                messages=[
-                    {"role": "system", "content": "You are a helpful AI assistant."},
-                    {"role": "user", "content": user_message}
-                ],
-                temperature=0.7,
-                max_tokens=150
-            )
-            
-            ai_response = response.choices[0].message.content
+            response = hf_client.get_chat_response(user_message)
+            ai_response = response
             logger.info(f"AI response: {ai_response}")
             
             return jsonify({
@@ -121,10 +86,10 @@ def chat():
             })
             
         except Exception as e:
-            logger.error(f"OpenAI API Error: {str(e)}")
+            logger.error(f"API Error: {str(e)}")
             return jsonify({
                 "success": False,
-                "error": f"OpenAI API Error: {str(e)}"
+                "error": f"API Error: {str(e)}"
             }), 500
             
     except Exception as e:
