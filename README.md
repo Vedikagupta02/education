@@ -1,13 +1,14 @@
 # AI-Powered Education & Career Guidance Platform
 
-This is a modern, full-featured education platform built with Next.js 14 and TypeScript, designed to empower students with personalized career guidance, class-specific learning modules, and interactive UI components. It integrates cutting-edge technologies like the OpenAI API, Framer Motion, and Swiper to deliver an engaging and intuitive experience.
+This is a modern, full-featured education platform built with Next.js and TypeScript, designed to empower students with personalized career guidance, class-specific learning modules, and interactive UI components. It integrates cutting-edge technologies for delivering an engaging and intuitive experience.
 
 ## Features
 
 ### AI-Powered Career Guidance
-- **Personalized career advice** based on user interests, goals, and skills
-- Powered by OpenAI's GPT for real-time, intelligent recommendations
+- Personalized career advice based on user interests, goals, and skills
+- Real-time career recommendations using local HuggingFace models
 - Streamlined form and result view tailored for Class 10 students choosing their academic stream (Science, Commerce, Arts)
+- Concise and focused career suggestions (3-4 lines per recommendation)
 
 ### Class Management System
 - Learning modules and assignments for Classes 3 to 10
@@ -35,8 +36,8 @@ This is a modern, full-featured education platform built with Next.js 14 and Typ
 |-------|------------|
 | Frontend | Next.js 14, React, TypeScript |
 | Styling | CSS, Framer Motion, Swiper |
-| AI Backend | OpenAI API  |
-| Backend | Flask  |
+| AI Backend | HuggingFace Transformers |
+| Backend | Flask |
 
 ## Getting Started
 
