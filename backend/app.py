@@ -14,9 +14,13 @@ load_dotenv()
 
 # Initialize Flask app
 app = Flask(__name__)
+
+# Get allowed origins from environment variable or use defaults
+allowed_origins = os.getenv('ALLOWED_ORIGINS', 'http://localhost:3000,http://127.0.0.1:3000').split(',')
+
 CORS(app, resources={
     r"/api/*": {
-        "origins": ["http://localhost:3000", "http://127.0.0.1:3000"],
+        "origins": allowed_origins,
         "methods": ["GET", "POST", "OPTIONS"],
         "allow_headers": ["Content-Type", "Authorization"]
     }
@@ -60,7 +64,8 @@ def career_advice():
         """
 
         try:
-            response = openai.ChatCompletion.create(
+            client = openai.OpenAI(api_key=os.getenv('OPENAI_API_KEY'))
+            response = client.chat.completions.create(
                 model="gpt-3.5-turbo",
                 messages=[
                     {"role": "system", "content": "You are a career counselor for Class 10 students."},
@@ -70,12 +75,12 @@ def career_advice():
             advice = response.choices[0].message.content
             return jsonify({"success": True, "advice": advice})
         except Exception as e:
-            logger.error(f"OpenAI API error: {str(e)}")
-            return jsonify({"success": False, "error": "An error occurred while generating career advice"}), 500
+            logger.error(f"OpenAI API error: {str(e)}", exc_info=True)
+            return jsonify({"success": False, "error": f"OpenAI API error: {str(e)}"}), 500
 
     except Exception as e:
-        logger.error(f"Error in career advice: {str(e)}")
-        return jsonify({"success": False, "error": str(e)}), 500
+        logger.error(f"Error in career advice: {str(e)}", exc_info=True)
+        return jsonify({"success": False, "error": f"Backend error: {str(e)}"}), 500
 
 @app.route('/api/chat', methods=['POST'])
 def chat():
@@ -144,4 +149,6 @@ def not_found(e):
 
 if __name__ == '__main__':
     logger.info("Starting Flask server...")
-    app.run(debug=True, port=5000, host='0.0.0.0')
+    port = int(os.getenv('PORT', 5000))
+    debug = os.getenv('FLASK_DEBUG', 'False').lower() == 'true'
+    app.run(debug=debug, port=port, host='0.0.0.0')
