@@ -26,11 +26,13 @@ This is a modern education platform built with Next.js 14 and TypeScript, design
 - Professional communication interface
 
 ## Tech Stack
-### Layer | Technology
-- Frontend | Next.js 14, React, TypeScript
-- Styling | CSS, Framer Motion
-- AI Backend | Google Gemini API
-- Backend | Flask
+
+| Layer       | Technology                          |
+|-------------|-------------------------------------|
+| Frontend    | Next.js 14, React, TypeScript       |
+| Styling     | CSS, Framer Motion                  |
+| AI Backend  | Google Gemini API                   |
+| Backend     | Flask                               |
 
 ## Getting Started
 
